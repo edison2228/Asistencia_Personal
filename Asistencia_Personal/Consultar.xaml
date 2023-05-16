@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Asistencia_Personal.Consultar"
+               NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="Consumir Web Services"></Label>
+
+            <ListView x:Name="MyListView" ItemsSource="{Binding nombre}" ItemSelected="MyListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label x:Name="lblnombre" Text="{Binding nombre}"></Label>
+                                <Label x:Name="lblapellido" Text="{Binding apellido}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+
+                
+                </ListView.ItemTemplate>
+                
+            </ListView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnInsertar" Text="Consultar" Clicked="Button_Clicked" Grid.Column="0"/>
+                <Button x:Name="btnRegresar" Text="Regresar" Clicked="btnRegresar_Clicked" Grid.Column="1"/>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
