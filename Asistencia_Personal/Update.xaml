@@ -19,8 +19,9 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btnInsertar" Text="Insertar" Clicked="btnInsertar_Clicked" Grid.Column="0"/>
-                <Button x:Name="btnRegresar" Text="Regresar" Clicked="btnRegresar_Clicked" Grid.Column="1"/>
+                <Button x:Name="btnInsertar" Text="Eliminar" Clicked="btnInsertar_Clicked_1" Grid.Column="0"/>
+                <Button x:Name="btnUpdate" Text="Actualizar" Clicked="btnUpdate_Clicked" Grid.Column="1"/>
+                <Button x:Name="btnRegresar" Text="Regresar" Clicked="btnRegresar_Clicked" Grid.Column="2"/>
 
             </Grid>
         </StackLayout>

@@ -26,7 +26,7 @@ namespace Asistencia_Personal
 
             if (modo == "editar")
             {
-                Navigation.PushAsync(new Update());
+               //Navigation.PushAsync(new Update(2));
         
                 DisplayAlert("ALERT", "Personal actualizado correctamente", "salir");
             }

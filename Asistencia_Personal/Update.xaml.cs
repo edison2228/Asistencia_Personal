@@ -22,31 +22,68 @@ namespace Asistencia_Personal
     public partial class Update : ContentPage
     {
         private ObservableCollection<Asistencia_Personal.MainPage.DemoAPI> _post;
-        public Update()
+        public Update( string codigo, string nombre, string apellido, string edad)
         {
             InitializeComponent();
-            obtener();
+            obtener(codigo, nombre, apellido, edad);
         }
-        public async void obtener()
+        public  void obtener(string codigo, string nombre, string apellido, string edad)
         {
-            var url = "http://192.168.100.71:8095/moviles/1/post.php";
-            var client = new HttpClient();
-            var content = await client.GetStringAsync(url);
-            List<Asistencia_Personal.MainPage.DemoAPI> posts = JsonConvert.DeserializeObject<List<Asistencia_Personal.MainPage.DemoAPI>>(content);
-            _post = new ObservableCollection<Asistencia_Personal.MainPage.DemoAPI>(posts);
-
-            txtCodigo.Text = "36";
-
-           // MyListView.ItemsSource = _post;
+      
+            txtCodigo.Text = codigo;
+            txtNombre.Text = nombre;
+            txtApellido.Text = apellido;
+            txtEdad.Text = edad;
+         
         }
         private void btnRegresar_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new MainPage());
         }
 
-        private void btnInsertar_Clicked(object sender, EventArgs e)
+        private void btnUpdate_Clicked(object sender, EventArgs e)
         {
-         
+
+            try
+            {
+                WebClient cliente = new WebClient();
+                var parametros = new System.Collections.Specialized.NameValueCollection();
+                parametros.Add("codigo", txtCodigo.Text);
+                parametros.Add("nombre", txtNombre.Text);
+                parametros.Add("apellido", txtApellido.Text);
+                parametros.Add("edad", txtEdad.Text);
+
+                cliente.UploadValues(" http://192.168.100.71:8095/moviles/1/post.php?codigo=" + Int16.Parse(txtCodigo.Text) + "&nombre=" + txtNombre.Text + "&apellido=" + txtApellido.Text + "&edad=" + txtEdad.Text, "PUT", parametros);
+
+                txtCodigo.Text = txtCodigo.Text;
+                txtNombre.Text = txtCodigo.Text;
+                txtApellido.Text = txtApellido.Text;
+                txtEdad.Text = txtEdad.Text;
+
+
+                DisplayAlert("ALERT", "Dato actualizado correctamente", "salir");
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("ALERTA", ex.Message, "cerrar");
+            }
+        }
+
+        private void btnInsertar_Clicked_1(object sender, EventArgs e)
+        {
+            try
+            {
+                WebClient cliente = new WebClient();
+                var parametros = new System.Collections.Specialized.NameValueCollection();
+ 
+                cliente.UploadValues(" http://192.168.100.71:8095/moviles/1/post.php?codigo=" + Int16.Parse(txtCodigo.Text), "DELETE", parametros);
+
+                DisplayAlert("ALERT", "Dato eliminado correctamente", "salir");
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("ALERTA", ex.Message, "cerrar");
+            }
         }
     }
 }

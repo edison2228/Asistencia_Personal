@@ -13,6 +13,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
+                                <Label x:Name="lblacodigo" Text="{Binding codigo}"></Label>
                                 <Label x:Name="lblnombre" Text="{Binding nombre}"></Label>
                                 <Label x:Name="lblapellido" Text="{Binding apellido}"></Label>
                             </StackLayout>
