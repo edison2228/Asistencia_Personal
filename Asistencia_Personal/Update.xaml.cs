@@ -56,7 +56,7 @@ namespace Asistencia_Personal
                 cliente.UploadValues(" http://192.168.100.71:8095/moviles/1/post.php?codigo=" + Int16.Parse(txtCodigo.Text) + "&nombre=" + txtNombre.Text + "&apellido=" + txtApellido.Text + "&edad=" + txtEdad.Text, "PUT", parametros);
 
                 txtCodigo.Text = txtCodigo.Text;
-                txtNombre.Text = txtCodigo.Text;
+                txtNombre.Text = txtNombre.Text;
                 txtApellido.Text = txtApellido.Text;
                 txtEdad.Text = txtEdad.Text;
 
